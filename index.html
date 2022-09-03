@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset = "utf-8" lang = "ja">
-        <link rel = "icon" href = "Vaa.png">
+        <link rel="icon" href="Vaa.png">
         <title>検温自動化サイト</title>
     </head>
     <body>
@@ -37,7 +37,7 @@
             border: solid 2px black;
             border-radius: 5px;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学年番号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input id = "EX" type = "text" required>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <input type = "text" id = "EX" required>&nbsp;&nbsp;&nbsp;&nbsp;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;体温(ランダム)
             <input type = "text" id = "BX" requiered>&nbsp;&nbsp;&nbsp;&nbsp;<br>
             &nbsp;&nbsp;&nbsp;&nbsp;出欠確認
@@ -108,7 +108,8 @@
         }
     </style>
     <script type = "text/javascript">
-        document.cookie = EX;
+        let lent = document.cookie;
+        document.getElementById("EX").value = lent;
         let random = Math.floor(Math.random() * 4) + 4;
         let AX = "36." + random;
         document.getElementById("BX").value = AX;
@@ -116,7 +117,11 @@
         let t2177 = document.getElementById("BX");
         let s2177 = document.getElementById("FX");
         console.log("--初期設定\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
+        if (b2177.value == "") {
+            var number = prompt("4桁の学年番号を入力してください。例:3300","");
+        } else {
         alert("現在の設定情報:\n学年番号:" + b2177.value + ", 体温:" + t2177.value + ", 出席確認:" + s2177.value + ".\n設定の変更方法:\n『詳細を表示』>>『設定の表示』から変更することができます。");
+        }
 
         function setting() {
             console.log("--現在の設定内容\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
