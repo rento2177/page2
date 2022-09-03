@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8" lang = "ja">
+        <link rel = "icon" href = "Vaa.png">
+        <title>検温自動化サイト</title>
+    </head>
+    <body>
+        <div
+        style = "background-color: black; 
+        color: honeydew; 
+        text-align: center;
+        font-size: 50px;
+        border:2px solid rgb(0, 250, 162);">Kenon Zidouka</div>
+        <center>
+        <details>
+            <summary
+            style = "border: solid 2px black;
+            border-radius: 5px;
+            width: 130px;">詳細を表示</summary>
+            <div
+            style = "width: fit-content;
+            margin: 0.2em 0;
+            border: solid 2px black;
+            border-radius: 5px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;『送信する』を押すと設定された入力情報をフォームに自動入力し、送信されます。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;『自動入力する』を押すと設定された入力情報をフォームに自動入力します。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;また、手動でフォームに直接入力したい場合は『フォームを開く』を押してください。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            </div>
+            <div
+            style = "text-align: center;
+            border: solid 2px black;
+            border-radius: 5px;
+            width: 130px;">▼ 設定の表示</div>
+            <div
+            style = "width: fit-content;
+            border: solid 2px black;
+            border-radius: 5px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学年番号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input id = "EX" type = "text" required>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;体温(ランダム)
+            <input type = "text" id = "BX" requiered>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;出欠確認
+            <select 
+            id = "FX"
+            style = "font-size: 20px;
+            width: 100px;">
+                <option value = "出席">出席</option>
+                <option value = "遅刻">遅刻</option>
+                <option value = "早退">早退</option>
+                <option value = "欠席">欠席</option>
+            </select>
+            <br>
+            &nbsp;&nbsp;<button 
+            onclick = "setting()"
+            style = "height: 30px;
+            background-color: honeydew;
+            margin: 0.2em 0;
+            border-radius: 5px;">現在設定を表示</button>
+            </div>
+        </details>
+            <button 
+            style = "appearance: none;
+            margin: 1em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "clickB()">送信する</button><br>
+            <button 
+            style = "appearance: none;
+            margin: 0em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "window.open('https://google.com');">自動入力する</button><br>
+            <button 
+            style = "appearance: none;
+            margin: 1em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "window.open('https://google.com');">フォームを開く</button><br>
+        </center>
+        <div><small>令和4年度検温フォーム対応,<br>2022-9-3.</small></div>
+    </body>
+    <style>
+        input {
+            height: 20px;
+            margin: 0.2em 0;
+        }
+    </style>
+    <script type = "text/javascript">
+        document.cookie = EX;
+        let random = Math.floor(Math.random() * 4) + 4;
+        let AX = "36." + random;
+        document.getElementById("BX").value = AX;
+        let b2177 = document.getElementById("EX");
+        let t2177 = document.getElementById("BX");
+        let s2177 = document.getElementById("FX");
+        console.log("--初期設定\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
+        alert("現在の設定情報:\n学年番号:" + b2177.value + ", 体温:" + t2177.value + ", 出席確認:" + s2177.value + ".\n設定の変更方法:\n『詳細を表示』>>『設定の表示』から変更することができます。");
+
+        function setting() {
+            console.log("--現在の設定内容\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
+            alert("学年番号:" + b2177.value + ",\n設定体温:" + t2177.value + ",\n出席確認:" + s2177.value + ".");
+        }
+
+        function clickB() {
+            if (b2177.value.length != 4) {
+                console.log("🚫エラーコード:001\n:学年番号の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + b2177.value.length);
+                alert("エラー:001\n学年番号を4桁の数値のみに設定してください。");
+                return;
+            } else {
+                console.log("コード:001:正常に実行されました。");
+            }
+            if (!isNaN(b2177.value)) {
+                console.log("コード:002:正常に実行されました。");
+            } else {
+                console.log("🚫エラーコード:002\n:学年番号の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + b2177.value.length);
+                alert("エラー:002\n学年番号を4桁の数値のみに設定してください。");
+                return;
+            }
+            if (t2177.value.length != 4) {
+                console.log("🚫エラーコード:003\n:設定体温の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + t2177.value.length);
+                alert("エラー:003\n設定温度を4桁の数値のみに設定してください。");
+                return;
+            } else {
+                console.log("コード:003:正常に実行されました。");
+            }
+            if (!isNaN(t2177.value)) {
+                console.log("コード:004:正常に実行されました。");
+            } else {
+                console.log("🚫エラーコード:004\n:設定体温の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + t2177.value.length);
+                alert("エラー:004\n設定温度を4桁の数値のみに設定してください。");
+                return;
+            }
+            document.cookie = b2177.value;
+            window.open("https://www.google.com/");
+            console.log("送信完了")
+        }
+    </Script>
+<html>
