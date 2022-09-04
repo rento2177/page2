@@ -111,7 +111,7 @@
     </style>
     <script type = "text/javascript">
         let lent = document.cookie;
-        document.getElementById("EX").value = lent;
+        document.getElementById("EX").value = lent.replace("=", "");
         let random = Math.floor(Math.random() * 4) + 4;
         let AX = "36." + random;
         document.getElementById("BX").value = AX;
