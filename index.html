@@ -24,8 +24,8 @@
             border: solid 2px black;
             border-radius: 5px;">
             &nbsp;&nbsp;&nbsp;&nbsp;『送信する』を押すと設定された入力情報をフォームに自動入力し、送信されます。&nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;『自動入力する』を押すと設定された入力情報をフォームに自動入力します。&nbsp;&nbsp;&nbsp;&nbsp;<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;また、手動でフォームに直接入力したい場合は『フォームを開く』を押してください。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;『自動入力する』を押すと設定された入力情報がフォームに自動入力されます。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;また、手動でフォームに入力したい場合は『フォームを開く』を押してください。&nbsp;&nbsp;&nbsp;&nbsp;<br>
             </div>
             <div
             style = "text-align: center;
@@ -60,6 +60,7 @@
             </div>
         </details>
             <button 
+            id = "button1"
             style = "appearance: none;
             margin: 1em 0;
             height: 60px;
@@ -71,8 +72,9 @@
             border-radius: 10px;
             border: 2px solid rgb(0, 250, 162);
             transition: 0.2s;"
-            onclick = "clickB()">送信する</button><br>
+            onclick = "clickA();">送信する</button><br>
             <button 
+            id = "button2"
             style = "appearance: none;
             margin: 0em 0;
             height: 60px;
@@ -84,7 +86,7 @@
             border-radius: 10px;
             border: 2px solid rgb(0, 250, 162);
             transition: 0.2s;"
-            onclick = "window.open('https://google.com');">自動入力する</button><br>
+            onclick = "clickB();">自動入力する</button><br>
             <button 
             style = "appearance: none;
             margin: 1em 0;
@@ -97,9 +99,9 @@
             border-radius: 10px;
             border: 2px solid rgb(0, 250, 162);
             transition: 0.2s;"
-            onclick = "window.open('https://google.com');">フォームを開く</button><br>
+            onclick = "clickC();">フォームを開く</button><br>
         </center>
-        <div><small>令和4年度検温フォーム対応,<br>2022-9-3.</small></div>
+        <div><small>令和4年度検温フォーム対応,<br>2022-9-4.</small></div>
     </body>
     <style>
         input {
@@ -116,7 +118,7 @@
         let b2177 = document.getElementById("EX");
         let t2177 = document.getElementById("BX");
         let s2177 = document.getElementById("FX");
-        console.log("--初期設定\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
+        let e = "0";
         if (b2177.value == "") {
             var value = prompt("4桁の学年番号を入力してください。例:3300","");
             document.getElementById("EX").value = value;
@@ -124,10 +126,45 @@
         } else {
         alert("現在の設定情報:\n学年番号:" + b2177.value + ", 体温:" + t2177.value + ", 出席確認:" + s2177.value + ".\n設定の変更方法:\n『詳細を表示』>>『設定の表示』から変更することができます。");
         }
+        console.log("--初期設定\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
 
         function setting() {
             console.log("--現在の設定内容\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
             alert("学年番号:" + b2177.value + ",\n設定体温:" + t2177.value + ",\n出席確認:" + s2177.value + ".");
+        }
+
+        function clickA() {
+            if (b2177.value.length != 4) {
+                console.log("🚫エラーコード:001\n:学年番号の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + b2177.value.length);
+                alert("エラー:001\n学年番号を4桁の数値のみに設定してください。");
+                return;
+            } else {
+                console.log("コード:001:正常に実行されました。");
+            }
+            if (!isNaN(b2177.value)) {
+                console.log("コード:002:正常に実行されました。");
+            } else {
+                console.log("🚫エラーコード:002\n:学年番号の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + b2177.value.length);
+                alert("エラー:002\n学年番号を4桁の数値のみに設定してください。");
+                return;
+            }
+            if (t2177.value.length != 4) {
+                console.log("🚫エラーコード:003\n:設定体温の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + t2177.value.length);
+                alert("エラー:003\n設定温度を4桁の数値のみに設定してください。");
+                return;
+            } else {
+                console.log("コード:003:正常に実行されました。");
+            }
+            if (!isNaN(t2177.value)) {
+                console.log("コード:004:正常に実行されました。");
+            } else {
+                console.log("🚫エラーコード:004\n:設定体温の異常を検知しました。4桁の数字のみに設定してください。\n現在の文字数:" + t2177.value.length);
+                alert("エラー:004\n設定温度を4桁の数値のみに設定してください。");
+                return;
+            }
+            document.cookie = b2177.value;
+            window.open("https://docs.google.com/forms/u/4/d/e/1FAIpQLSeByyv7N1vAXx73c-hrOAlGY_pesLhwuIzFfpGYcJ45DNpqAw/formResponse?entry.1699242514=" + b2177.value + "&entry.257619178=" + t2177.value + "&entry.1679960827=" + s2177.value + "&fbzx=3934414656570543948&pageHistory=0");
+            console.log("送信完了");
         }
 
         function clickB() {
@@ -160,8 +197,13 @@
                 return;
             }
             document.cookie = b2177.value;
-            window.open("https://www.google.com/");
-            console.log("送信完了")
+            window.open("https://docs.google.com/forms/d/e/1FAIpQLSeByyv7N1vAXx73c-hrOAlGY_pesLhwuIzFfpGYcJ45DNpqAw/viewform?usp=pp_url&entry.1699242514=" + b2177.value + "&entry.257619178=" + t2177.value + "&entry.1679960827=" + s2177.value + "&entry.1424984360&-3742831246616189614");
+            console.log("入力完了");
+        }
+
+        function clickC() {
+            window.open("https://docs.google.com/forms/d/e/1FAIpQLSeByyv7N1vAXx73c-hrOAlGY_pesLhwuIzFfpGYcJ45DNpqAw/viewform");
+            console.log("実行完了");
         }
     </Script>
 <html>
