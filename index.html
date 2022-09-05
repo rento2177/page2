@@ -110,8 +110,7 @@
         }
     </style>
     <script type = "text/javascript">
-        let data = localStorage.getItem("value4");
-        let lent = JSON.parse(data);
+        let lent = localStorage.getItem("value4");
         document.getElementById("EX").value = lent;
         let random = Math.floor(Math.random() * 4) + 4;
         let AX = "36." + random;
