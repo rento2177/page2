@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang = "ja">
+    <head>
+        <meta charset = "utf-8">
+        <link rel = "icon" href = "Vaa2.png">
+        <title>R.x</title>
+        <input type = "button" value = "ホーム" onclick = "location.href = ('ax.html');">
+        <input type = "button" value = "お知らせ" onclick = "location.href = ('cx.html');">
+        <input type = "button" value = "Google" onclick = "location.href = ('https://google.com');">
+        <input type = "button" value = "ログイン" onclick = "login();">
+    </head>
+    <body style = "background-color: black;
+    color: #00ff00;
+    text-align: center;">
+    <h1 style = "margin: 0;
+    font-size: 50px;">R.ツールの詳細</h1>
+    <hr>
+    <div style = "margin: 0.4em 0;
+    font-size: 20px;">【注意事項】</div>
+    <div>・ホーム画面にサイトを追加することは控えてください。</div>
+    <small>⇒ホーム画面から消せなくなり危険だからです。</small>
+    <div style = "margin-top: 3%">・このサイトはあまり広めないようにしてください。</div>
+    <small>⇒卒業後なら全然問題ないが、広まるとめんどくさい事になるからです。</small><br>
+    <div style = "margin-top: 3%">・このツールを使用する際には悪用、乱用などに注意してください。</div>
+    <small>⇒必要以上に送信するとヤバいやつだと思われます。注意しましょう。</small><br>
+    <hr size = 1>
+    <div style = "margin: 0.4em 0;
+    font-size: 20px;">【開発目的】</div>
+    <div>サイト作成技術の向上、ただそれだけ。</div>
+    <small>ついでに、ツール作ってみようってことよ。</small>
+    <hr size = 1>
+    <div style = "margin: 0.4em 0;
+    font-size: 20px;">【ツール紹介】</div>
+    <pre style = "font-size: 15px;">
+<u style = "font-size: 18px;"> 検温自動化 </u>
+
+毎朝検温フォームで入力するのがめんどくさいから自動化させたもの。
+ただフォームを開くだけ、自動入力、ワンタップ送信という機能がついているよ。
+もちろん体温は測ろうね。
+
+<u>特徴①</u> ・サイトを開くたびに体温はランダムに設定される。
+
+<u>特徴②</u> ・学年番号はサイトを閉じても保存される。(新機能)
+
+<u style = "font-size: 18px;"> 美術自動入力 </u>
+
+2022/9/22現在、開発中のツール。
+一応使えるようにはしてあるけど未完成。
+
+<u>特徴①</u> ・日付と学年番号の自動入力。
+<small>(2022/9/22現在、データの保存機能は付いていないため学年番号の保存はできない)</small>
+    </pre>
+    <hr size = 1>
+    <div style = "margin: 0.4em 0;
+    font-size: 20px;">【その他の情報】</div>
+    <pre style = "font-size: 15px;">
+このサイトは<a href = "https://github.com/">GitHub</a>というサイトで無料公開されています。
+興味があれば見てみてね。
+
+エラーがあるとアラートで簡単に警告されるようになっているけど、
+詳しい情報やエラー原因はコンソールログに書き込まれているからPCとかで確認してみてね。
+
+<samll>
+【コンソールログの確認方法(Windows)】
+⇒Google Chromeの設定(右上)>> その他のツール>> デロッパーツール(Ctrl+Shift+I)>> コンソール
+</samll>
+
+ログイン情報はローカルストレージを使用し、 変数value4に保存されています。
+
+何か問題があったらすぐ消します。
+    </pre>
+    </body>
+    <style>
+        input {
+            appearance: none;
+            margin: 0;
+            height: 30px;
+            width: 120px;
+            font-size: 100%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid rgb(0, 250, 162);
+            transition: 0.2s;
+        }
+    </style>
+    <script tyoe = "text/javascript">
+    let lent = localStorage.getItem("value4");
+    console.log("ログイン番号:" + lent);
+    function login() {
+        if (lent == "undefined" || lent == undefined) {
+            lent = "null";
+        }
+        if (lent != "null" || lent == false) {
+            let AX = confirm("現在、" + lent + ",でログインされています。変更しますか？");
+            if (AX) {
+                var BX = true;
+            } else {
+                return false;
+            }
+        } else {
+            var BX = true;
+        }
+        if (BX == true) {
+            if (lent == "null" || lent == false) {
+                var value2 = lent;
+                value2 = 3300;
+            } else {
+                var value2 = lent;
+            }
+            var value = prompt("4桁の学年番号を入力してください。 例:3300", value2);
+            let backUp = value;
+        }
+        lent = value;
+        console.log("学年番号が" + lent + "に設定されました。");
+        if (lent.length == 0) {
+            console.log("🚫エラーコード:005\n:学年番号が入力されていません。なお、問題はありません。");
+            alert("コード:005\n学年番号が入力されていません。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:005:正常に実行されました。");
+        }
+        if (lent.length != 4) {
+            console.log("🚫エラーコード:006\n:文字数が4桁ではありません。なお、問題はありません。\n現在の文字数:" + lent.length);
+            alert("コード:006\n学年番号が4桁ではありません。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:006:正常に実行されました。");
+        }
+        if (isNaN(lent)) {
+            console.log("🚫エラーコード:007\n:数値以外の文字が入力されています。なお、問題はありません。\n学年番号:" + lent);
+            alert("コード:007\n学年番号に文字が入力されています。数値のみにしてください。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:007:正常に実行されました。");
+        }
+        localStorage.setItem("value4", lent);
+        console.log("ログイン情報:" + lent);
+    }
+    </script>
+</html>
