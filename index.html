@@ -131,6 +131,7 @@
         function setting() {
             console.log("--現在の設定内容\n学年番号:" + b2177.value + ",\n体温:" + t2177.value + ",\n出席確認:" + s2177.value);
             alert("学年番号:" + b2177.value + ",\n設定体温:" + t2177.value + ",\n出席確認:" + s2177.value + ".");
+            localStorage.setItem("value4", b2177.value);
         }
 
         function clickA() {
