@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "utf-8">
+        <link rel = "icon" href = "Vaa2.png">
+        <title>R.x</title>
+        <input type = "button" value = "ツールの詳細" onclick = "location.href = ('bx.html');">
+        <input type = "button" value = "お知らせ" onclick = "location.href = ('cx.html');">
+        <input type = "button" value = "Google" onclick = "location.href = ('https://google.com');">
+        <input type = "button" value = "ログイン" onclick = "login();">
+    </head>
+    <body>
+        <h1>R.保管庫</h1>
+        <hr>
+        <u>
+            <div>※悪用・乱用注意※</div>
+        </u>
+        <br>
+            <button id = "button1" onClick = "window.open('https://rento2177.github.io/page2/index.html');">検温自動化</button><br>
+            <p>別に平温ならOKだし、自動化したろ！制御可能にするか！って感じで開発したツール。 最新版。</p>
+            <button id = "button2" onClick = "window.open('https://rento2177.github.io/control-site.v4/');">検温自動化(初期版)</button><br>
+            <p>検温自動化ツール作ってみよ!っていう好奇心から開発した初代検温自動化ツール。</p>
+            <button id = "button3" onClick = "window.open('https://rento2177.github.io/page2/input.html')">美術自動入力(開発中)</button>
+            <p>美術のフォーム入力めんど。そうだ、自動入力化したろ！っていうツール。</p>
+    </body>
+    <style>
+        html {
+            text-align: center;
+            color: #00ff00;
+            background-color: black;
+        }
+        h1 {
+            font-size: 50px;
+            margin: auto;
+        }
+        p {
+            margin:0.5em 0; 
+            margin-bottom: 30px;
+        }
+        input {
+            appearance: none;
+            margin: 0;
+            height: 30px;
+            width: 120px;
+            font-size: 100%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid rgb(0, 250, 162);
+            transition: 0.2s;
+        }
+        button {
+            appearance: none;
+            margin: 0;
+            height: 60px;
+            width: 600px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;
+        }
+    </style>
+    <script type = "text/javascript">
+    let lent = localStorage.getItem("value4");
+    console.log("ログイン番号:" + lent);
+    function login() {
+        if (lent == "undefined" || lent == undefined) {
+            lent = "null";
+        }
+        if (lent != "null" || lent == false) {
+            let AX = confirm("現在、" + lent + ",でログインされています。変更しますか？");
+            if (AX) {
+                var BX = true;
+            } else {
+                return false;
+            }
+        } else {
+            var BX = true;
+        }
+        if (BX == true) {
+            if (lent == "null" || lent == false) {
+                var value2 = lent;
+                value2 = 3300;
+            } else {
+                var value2 = lent;
+            }
+            var value = prompt("4桁の学年番号を入力してください。 例:3300", value2);
+            let backUp = value;
+        }
+        lent = value;
+        console.log("学年番号が" + lent + "に設定されました。");
+        if (lent.length == 0) {
+            console.log("🚫エラーコード:005\n:学年番号が入力されていません。なお、問題はありません。");
+            alert("コード:005\n学年番号が入力されていません。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:005:正常に実行されました。");
+        }
+        if (lent.length != 4) {
+            console.log("🚫エラーコード:006\n:文字数が4桁ではありません。なお、問題はありません。\n現在の文字数:" + lent.length);
+            alert("コード:006\n学年番号が4桁ではありません。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:006:正常に実行されました。");
+        }
+        if (isNaN(lent)) {
+            console.log("🚫エラーコード:007\n:数値以外の文字が入力されています。なお、問題はありません。\n学年番号:" + lent);
+            alert("コード:007\n学年番号に文字が入力されています。数値のみにしてください。なお、問題はありません。");
+            return false;
+        } else {
+            console.log("コード:007:正常に実行されました。");
+        }
+        localStorage.setItem("value4", lent);
+        console.log("ログイン情報:" + lent);
+    }
+    </script>
+</html>
