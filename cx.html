@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang = "ja">
+    <head>
+        <meta charset = "utf-8">
+        <link rel = "icon" href = "Vaa2.png">
+        <title>R.x</title>
+        <input type = "button" value = "ツールの詳細" onclick = "location.href = ('bx.html');">
+        <input type = "button" value = "ホーム" onclick = "location.href = ('ax.html');">
+        <input type = "button" value = "Google" onclick = "location.href = ('https://google.com');">
+        <input type = "button" value = "ログイン" onclick = "login();">
+    </head>
+<!--複製用
+         <div style = "font-size: 20px;">
+        <u>
+            Version:1.0
+        </u>
+    </div>
+    <small>⇒検温自動化サイト公開 <a href = "">対象サイト</a></small>
+    <hr size = 1>
+-->
+    <body style = "background-color: black;
+    color: #00ff00;
+    text-align: center;">
+        <h1 style = "margin: 0;
+        font-size: 50px;">R.お知らせ</h1>
+        <hr>
+        <!--ここに貼り付け↓-->
+        <div style = "font-size: 20px;">
+            <u>
+                Version:3.2
+            </u>
+        </div>
+        <small>⇒検温自動化サイト公開 <a href = "https://rento2177.github.io/page2/cx.html">対象サイト</a></small>
+        <hr size = 1>
+        <div style = "font-size: 20px;">
+            <u>
+                Version:3.1
+            </u>
+        </div>
+        <small>⇒ツール詳細公開 <a href = "https://rento2177.github.io/page2/bx.html">対象サイト</a></small>
+        <hr size = 1>
+        <div style = "font-size: 20px;">
+            <u>
+                Version:3.0
+            </u>
+        </div>
+        <small>⇒ホームサイト公開 <a href = "https://rento2177.github.io/page2/ax.html">対象サイト</a></small>
+        <hr size = 1>
+        <div style = "font-size: 20px;">
+            <u>
+                Version:2.0
+            </u>
+        </div>
+        <small>⇒美術自動化サイト公開 <a href = "https://rento2177.github.io/page2/input.html">対象サイト</a></small>
+        <hr size = 1>
+        <div style = "font-size: 20px;">
+            <u>
+                Version:1.1
+            </u>
+        </div>
+        <small>⇒[new]検温自動化サイト公開 <a href = "https://rento2177.github.io/page2/index.html">対象サイト</a></small>
+        <hr size = 1>
+        <div style = "font-size: 20px;">
+            <u>
+                Version.1.0
+            </u>
+        </div>
+        <small>⇒検温自動化サイト公開 <a href = "https://rento2177.github.io/control-site.v4/">対象サイト</a></small>
+    </body>
+    <style>
+    input {
+        appearance: none;
+        margin: 0;
+        height: 30px;
+        width: 120px;
+        font-size: 100%;
+        background: black;
+        color: honeydew;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid rgb(0, 250, 162);
+        transition: 0.2s;
+        }
+        div {
+            margin-top: 2%;
+        }
+    </style>
+    </style>
+    <script tyoe = "text/javascript">
+        let lent = localStorage.getItem("value4");
+        console.log("ログイン番号:" + lent);
+        function login() {
+            if (lent == "undefined" || lent == undefined) {
+                lent = "null";
+            }
+            if (lent != "null" || lent == false) {
+                let AX = confirm("現在、" + lent + ",でログインされています。変更しますか？");
+                if (AX) {
+                    var BX = true;
+                } else {
+                    return false;
+                }
+            } else {
+                var BX = true;
+            }
+            if (BX == true) {
+                if (lent == "null" || lent == false) {
+                    var value2 = lent;
+                    value2 = 3300;
+                } else {
+                    var value2 = lent;
+                }
+                var value = prompt("4桁の学年番号を入力してください。 例:3300", value2);
+                let backUp = value;
+            }
+            lent = value;
+            console.log("学年番号が" + lent + "に設定されました。");
+            if (lent.length == 0) {
+                console.log("🚫エラーコード:005\n:学年番号が入力されていません。なお、問題はありません。");
+                alert("コード:005\n学年番号が入力されていません。なお、問題はありません。");
+                return false;
+            } else {
+                console.log("コード:005:正常に実行されました。");
+            }
+            if (lent.length != 4) {
+                console.log("🚫エラーコード:006\n:文字数が4桁ではありません。なお、問題はありません。\n現在の文字数:" + lent.length);
+                alert("コード:006\n学年番号が4桁ではありません。なお、問題はありません。");
+                return false;
+            } else {
+                console.log("コード:006:正常に実行されました。");
+            }
+            if (isNaN(lent)) {
+                console.log("🚫エラーコード:007\n:数値以外の文字が入力されています。なお、問題はありません。\n学年番号:" + lent);
+                alert("コード:007\n学年番号に文字が入力されています。数値のみにしてください。なお、問題はありません。");
+                return false;
+            } else {
+                console.log("コード:007:正常に実行されました。");
+            }
+            localStorage.setItem("value4", lent);
+            console.log("ログイン情報:" + lent);
+        }
+        </script>
+</html>
