@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset = "utf-8" lang = "ja">
+        <link rel="icon" href="Vaa2.png">
+        <title>R.1</title>
+    </head>
+    <body>
+        <center>
+            <a href = "https://rento2177.github.io/page2/ax.html">backHome</a>
+        </center>
+        <div
+        style = "background-color: black; 
+        color: honeydew; 
+        text-align: center;
+        font-size: 50px;
+        border:2px solid rgb(0, 250, 162);">R.1 Zidouka</div>
+        <center>
+        <details>
+            <summary
+            style = "border: solid 2px black;
+            border-radius: 5px;
+            width: 130px;">詳細を表示</summary>
+            <div
+            style = "width: fit-content;
+            margin: 0.2em 0;
+            border: solid 2px black;
+            border-radius: 5px;">&nbsp;&nbsp;&nbsp;&nbsp;『自動入力する』を押すと設定された学年, 学級 ,項目が自動入力されます。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;『違反者ゼロで送信する』を押すと設定された学年 ,学級 ,項目が自動入力され違反者ゼロで送信を完了します。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;また、手動でフォームに直接入力したい場合は『フォームを開く』を押してください。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;設定内容は『設定の表示』から再設定, 確認ができます。&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            </div>
+            <div
+            style = "text-align: center;
+            border: solid 2px black;
+            border-radius: 5px;
+            width: 130px;">▼ 設定の表示</div>
+            <div
+            style = "width: fit-content;
+            border: solid 2px black;
+            border-radius: 5px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学年
+                        <select 
+                        id = "AX"
+                        style = "font-size: 15px;
+                        height: 30px;
+                        width: 200px;">
+                            <option value = "１年">１年</option>
+                            <option value = "２年">２年</option>
+                            <option value = "３年">３年</option>
+                        </select>&nbsp;
+                        &nbsp;学級
+                        <select 
+                        id = "BX"
+                        style = "font-size: 15px;
+                        height: 30px;
+                        width: 200px;">
+                            <option value = "１組">１組</option>
+                            <option value = "２組">２組</option>
+                            <option value = "３組">３組</option>
+                            <option value = "４組">４組</option>
+                            <option value = "５組">５組</option>
+                            <opution value = "６組">６組</opution>
+                        </select>&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;チェック項目
+                        <select 
+                        id = "CX"
+                        style = "font-size: 15px;
+                        height: 30px;
+                        width: 200px;">
+                            <option value = "未設定">未設定</option>
+                            <option value = "服装">服装点検 (月曜日)</option>
+                            <option value = "靴箱">靴箱点検 (火曜日)</option>
+                            <option value = "机">机点検 (水曜日)</option>
+                            <option value = "ロッカー">ロッカー点検 (木曜日)</option>
+                        </select>
+                        <br>
+                        &nbsp;&nbsp;<button 
+                        onclick = "setting()"
+                        style = "height: 30px;
+                        background-color: honeydew;
+                        margin: 0.2em 0;
+                        border-radius: 5px;">現在設定を表示</button>
+            </div>
+        </details>
+            <button 
+            id = "button1"
+            style = "appearance: none;
+            margin: 1em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "clickA();">自動入力する</button><br>
+            <button 
+            id = "button2"
+            style = "appearance: none;
+            margin: 0em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "clickB();">違反者ゼロで送信する</button><br>
+            <button 
+            style = "appearance: none;
+            margin: 1em 0;
+            height: 60px;
+            width: 650px;
+            font-size: 200%;
+            background: black;
+            color: honeydew;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid rgb(0, 250, 162);
+            transition: 0.2s;"
+            onclick = "clickC();">フォームを開く</button><br>
+        </center>
+        <div><small>令和4年度,生活点検フォーム対応,<br>2022/10/28.</small></div>
+    </body>
+    <style>
+        input {
+            height: 20px;
+            margin: 0.2em 0;
+        }
+    </style>
+    <script type = "text/javascript">
+        let pass = localStorage.getItem("value3");
+        if (pass != "100") {
+            var password = prompt("このツールは使用が制限されているためパスワードを入力して下ださい。(初回のみ)");
+            if (password != "100") {
+                location.href = ("https://rento2177.github.io/page2/ax.html");
+            }
+            localStorage.setItem("value3", password);
+        } else {
+            console.log("ログインに成功しました。");
+        }
+        document.getElementById("AX").value = localStorage.getItem("value1");
+        document.getElementById("BX").value = localStorage.getItem("value2");
+        /*if (localStorage.getItem("value1").length != 2 || localStorage.getItem("value2").length != 2) {
+            location.href = ("https://rento2177.github.io/page2/login.html");
+        }*/
+        let today = new Date();
+        let day = today.getDay();
+        if (day >= 0 && day <= 6) {
+            if (day == 0 || day == 5 || day == 6) {
+                var days = "未設定";
+            }
+            if (day == 1) {
+                var days = "服装";
+            }
+            if (day == 2) {
+                var days = "靴箱"; 
+            }
+            if (day == 3) {
+                var days = "机";
+            }
+            if (day == 4) {
+                var days = "ロッカー";
+            }
+        }
+        document.getElementById("CX").value = days;
+        function setting() {
+            console.log("[現在の設定情報]\n学年:" + AX.value + ", 学級:" + BX.value + ", \nチェック項目:" + CX.value + "点検");
+            localStorage.setItem("value1", AX.value);
+            localStorage.setItem("value2", BX.value);
+        }
+
+        function clickA() {
+            window.open("https://docs.google.com/forms/u/1/d/e/1FAIpQLScr1cUMngBBswM2S8z1Qj0U0BN_ZTMOv3I10bQRZw-RV6dNjw/viewform?entry.1281210791=" + AX.value + "&entry.383056132=" + BX.value + "&entry.258216359=" + CX.value);
+            localStorage.setItem("value1", AX.value);
+            localStorage.setItem("value2", BX.value);
+        }
+        
+        function clickB() {
+            window.open("https://docs.google.com/forms/u/4/d/e/1FAIpQLScr1cUMngBBswM2S8z1Qj0U0BN_ZTMOv3I10bQRZw-RV6dNjw/formResponse?entry.1281210791=" + AX.value + "&entry.383056132=" + BX.value + "&entry.258216359=" + CX.value + "&entry.120820971=なし");
+            localStorage.setItem("value1", AX.value);
+            localStorage.setItem("value2", BX.value);
+        }
+
+        function clickC() {
+            window.open("https://docs.google.com/forms/d/e/1FAIpQLScr1cUMngBBswM2S8z1Qj0U0BN_ZTMOv3I10bQRZw-RV6dNjw/viewform");
+        }
+    </Script>
+<html>
