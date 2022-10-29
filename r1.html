@@ -60,7 +60,7 @@
                             <option value = "３組">３組</option>
                             <option value = "４組">４組</option>
                             <option value = "５組">５組</option>
-                            <option value = "６組">６組</opution>
+                            <opution value = "６組">６組</opution>
                         </select>&nbsp;&nbsp;&nbsp;&nbsp;<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;チェック項目
                         <select 
@@ -132,6 +132,9 @@
             height: 20px;
             margin: 0.2em 0;
         }
+        select {
+            margin: 0.2em 0;
+        }
     </style>
     <script type = "text/javascript">
         let pass = localStorage.getItem("value3");
@@ -146,7 +149,7 @@
         }
         document.getElementById("AX").value = localStorage.getItem("value1");
         document.getElementById("BX").value = localStorage.getItem("value2");
-        if (localStorage.getItem("value1").length != 2 || localStorage.getItem("value2").length != 2) {
+        if (AX.value.length != 2 || BX.value.length != 2) {
             location.href = ("https://rento2177.github.io/page2/login.html");
         }
         let today = new Date();
